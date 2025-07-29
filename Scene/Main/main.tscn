@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddokf6bruhv05"]
+
+[ext_resource type="PackedScene" uid="uid://bo8buergupsg0" path="res://Scene/Player/player.tscn" id="1_ajaps"]
+[ext_resource type="Texture2D" uid="uid://l23iv7u7pucn" path="res://assets/sprites/world/house/littleroot.png" id="1_c5csi"]
+
+[node name="Main" type="Node2D"]
+position = Vector2(0, 2)
+
+[node name="littlerrot" type="Sprite2D" parent="."]
+position = Vector2(240, 206)
+texture = ExtResource("1_c5csi")
+
+[node name="Player" parent="." instance=ExtResource("1_ajaps")]
+position = Vector2(216, 166)
