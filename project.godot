@@ -13,6 +13,7 @@ config_version=5
 config/name="pokemon-emerald-clone"
 run/main_scene="uid://ddokf6bruhv05"
 config/features=PackedStringArray("4.4", "Mobile")
+run/max_fps=30
 config/icon="res://icon.svg"
 
 [display]
@@ -46,7 +47,14 @@ right={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_9="walls"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color.editor_hint=Color(0.301961, 0.301961, 0.301961, 1)

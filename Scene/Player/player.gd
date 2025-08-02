@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
     process_player_input()
   elif input_direction != Vector2.ZERO:
     move(delta)
+    play_animation('walk', input_direction)
   else:
     is_moving = false
 
@@ -39,17 +40,18 @@ func process_player_input():
   if input_direction != Vector2.ZERO:
     if need_to_turn():
       player_state = PlayerState.TURNING
-
       if input_direction == Vector2.LEFT:
         scale = Vector2(1, 1)
       elif input_direction == Vector2.RIGHT:
         scale = Vector2(-1, 1)
     else:
-      play_animation('walk', input_direction)
+      player_state = PlayerState.WALKING
       initial_position = position
       is_moving = true
   else:
-    animation_player.stop()
+    is_moving = false
+    animation_player.stop(true)
+    play_animation('idle', input_direction)
 
 func need_to_turn():
   var new_facing_direction
