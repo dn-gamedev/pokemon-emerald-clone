@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgeufephf4ky2"]
+
+[ext_resource type="Texture2D" uid="uid://d1g48gqw0i571" path="res://assets/sprites/world/PlayerHouse/1-room.png" id="1_em1p8"]
+[ext_resource type="Texture2D" uid="uid://dtu15jxlmrptv" path="res://assets/sprites/world/PlayerHouse/bed.png" id="2_cqplj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grl04"]
+size = Vector2(16, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqplj"]
+size = Vector2(112, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vre7u"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5w0h"]
+size = Vector2(160, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0sli7"]
+size = Vector2(136, 16)
+
+[node name="Room" type="Node2D"]
+
+[node name="1-room" type="Sprite2D" parent="."]
+position = Vector2(120, 80)
+texture = ExtResource("1_em1p8")
+
+[node name="Bed" type="Sprite2D" parent="."]
+position = Vector2(56, 80)
+texture = ExtResource("2_cqplj")
+offset = Vector2(16, 18)
+
+[node name="wall-top-1" type="StaticBody2D" parent="."]
+position = Vector2(184, 40)
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall-top-1"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_grl04")
+
+[node name="wall-top-2" type="StaticBody2D" parent="."]
+position = Vector2(150, 40)
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall-top-2"]
+position = Vector2(-46, -4)
+shape = SubResource("RectangleShape2D_cqplj")
+
+[node name="wall-top-3" type="StaticBody2D" parent="."]
+position = Vector2(72, 104)
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall-top-3"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_vre7u")
+
+[node name="boundary-bottom" type="Area2D" parent="."]
+position = Vector2(128, 161)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary-bottom"]
+position = Vector2(-8, -1)
+shape = SubResource("RectangleShape2D_v5w0h")
+
+[node name="boundary-side" type="Area2D" parent="."]
+position = Vector2(201, 80)
+rotation = -1.57079
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary-side"]
+position = Vector2(3.99999, -1)
+shape = SubResource("RectangleShape2D_0sli7")
+
+[node name="boundary-side2" type="Area2D" parent="."]
+position = Vector2(41, 80)
+rotation = -1.57079
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary-side2"]
+position = Vector2(3.99999, -1)
+shape = SubResource("RectangleShape2D_0sli7")

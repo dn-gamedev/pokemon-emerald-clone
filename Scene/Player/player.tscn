@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bkagl4b2w7h88" path="res://Scene/Player/player.gd" id="1_yic5t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67a6e"]
-size = Vector2(12, 16)
+size = Vector2(12, 8)
 
 [sub_resource type="Animation" id="Animation_67a6e"]
 length = 0.001
@@ -247,8 +247,9 @@ vframes = 3
 region_rect = Rect2(0, 0, 48, 96)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_67a6e")
+debug_color = Color(0, 1, 0.227451, 0.419608)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

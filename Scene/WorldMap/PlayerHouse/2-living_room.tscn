@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=3 uid="uid://b66lpmsusf5tm"]
+
+[ext_resource type="Texture2D" uid="uid://ca0b0erp2gyo4" path="res://assets/sprites/world/PlayerHouse/2-living-room.png" id="1_i1j6o"]
+[ext_resource type="PackedScene" uid="uid://bo8buergupsg0" path="res://Scene/Player/player.tscn" id="2_7f85y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7f85y"]
+size = Vector2(16, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1j6o"]
+size = Vector2(40, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sktnb"]
+size = Vector2(16, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wjsr"]
+size = Vector2(32, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rswv"]
+size = Vector2(72, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6hgrn"]
+size = Vector2(48, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0i7o"]
+size = Vector2(16, 24)
+
+[node name="LivingRoom" type="Node2D"]
+
+[node name="2-living-room" type="Sprite2D" parent="."]
+position = Vector2(112, 80)
+texture = ExtResource("1_i1j6o")
+
+[node name="boundary-side" type="Area2D" parent="."]
+position = Vector2(8, 80)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary-side"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_7f85y")
+
+[node name="boundary-side2" type="Area2D" parent="."]
+position = Vector2(200, 80)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary-side2"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_7f85y")
+
+[node name="boundary-side3" type="Area2D" parent="."]
+position = Vector2(112, 168)
+rotation = 1.57079
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary-side3"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_7f85y")
+
+[node name="wall-top-1" type="Area2D" parent="."]
+position = Vector2(112, 32)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall-top-1"]
+position = Vector2(4, -4)
+shape = SubResource("RectangleShape2D_i1j6o")
+
+[node name="wall-top-2" type="Area2D" parent="."]
+position = Vector2(144, 48)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall-top-2"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_sktnb")
+
+[node name="wall-top-3" type="Area2D" parent="."]
+position = Vector2(176, 48)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall-top-3"]
+position = Vector2(8, -4)
+shape = SubResource("RectangleShape2D_6wjsr")
+
+[node name="wall-top-4" type="Area2D" parent="."]
+position = Vector2(72, 48)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall-top-4"]
+position = Vector2(-12, -4)
+shape = SubResource("RectangleShape2D_2rswv")
+
+[node name="wall-top-5" type="Area2D" parent="."]
+position = Vector2(104, 80)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall-top-5"]
+position = Vector2(-24, 4)
+shape = SubResource("RectangleShape2D_6hgrn")
+
+[node name="wall-top-6" type="Area2D" parent="."]
+position = Vector2(88, 112)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall-top-6"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_k0i7o")
+
+[node name="Player" parent="." instance=ExtResource("2_7f85y")]
+position = Vector2(160, 72)
