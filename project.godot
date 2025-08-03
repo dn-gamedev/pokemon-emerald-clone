@@ -24,6 +24,14 @@ window/size/window_width_override=960
 window/size/window_height_override=640
 window/stretch/mode="viewport"
 
+[file_customization]
+
+folder_colors={
+"res://GeneralNodes/": "yellow",
+"res://Scenes/": "blue",
+"res://assets/": "orange"
+}
+
 [input]
 
 up={
@@ -50,6 +58,7 @@ right={
 [layer_names]
 
 2d_physics/layer_1="player"
+2d_physics/layer_2="NPC"
 2d_physics/layer_9="walls"
 
 [rendering]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b37752ttceqgk"]
+
+[ext_resource type="Texture2D" uid="uid://dxlw6ckluxlep" path="res://assets/sprites/NPCs/mom/mom.png" id="1_jmpea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmpea"]
+size = Vector2(12, 8)
+
+[node name="Mom" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 257
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -11)
+texture = ExtResource("1_jmpea")
+hframes = 3
+vframes = 3
+frame = 2
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_jmpea")

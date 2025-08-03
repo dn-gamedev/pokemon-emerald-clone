@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b66lpmsusf5tm"]
+[gd_scene load_steps=11 format=3 uid="uid://b66lpmsusf5tm"]
 
 [ext_resource type="Texture2D" uid="uid://ca0b0erp2gyo4" path="res://assets/sprites/world/PlayerHouse/2-living-room.png" id="1_i1j6o"]
-[ext_resource type="PackedScene" uid="uid://bo8buergupsg0" path="res://Scene/Player/player.tscn" id="2_7f85y"]
+[ext_resource type="PackedScene" uid="uid://bo8buergupsg0" path="res://Scenes/Player/player.tscn" id="2_7f85y"]
+[ext_resource type="PackedScene" uid="uid://b37752ttceqgk" path="res://Scenes/NPC/mom.tscn" id="3_sktnb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7f85y"]
 size = Vector2(16, 176)
@@ -114,3 +115,8 @@ shape = SubResource("RectangleShape2D_k0i7o")
 
 [node name="Player" parent="." instance=ExtResource("2_7f85y")]
 position = Vector2(160, 72)
+collision_layers = 258
+
+[node name="Mom" parent="." instance=ExtResource("3_sktnb")]
+position = Vector2(64, 120)
+scale = Vector2(-1, 1)
