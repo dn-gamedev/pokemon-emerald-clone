@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var player_collision: CollisionShape2D = $CollisionShape2D
+
+@export_flags_2d_physics var collision_layers
 
 var walk_speed = 4.0
 const TILE_SIZE: int = 16
@@ -25,11 +28,9 @@ func _physics_process(delta: float) -> void:
     play_animation('turn', input_direction)
   elif is_moving == false:
     process_player_input()
-  elif input_direction != Vector2.ZERO:
+  else:
     move(delta)
     play_animation('walk', input_direction)
-  else:
-    is_moving = false
 
 func process_player_input():
   if input_direction.y == 0:
@@ -45,9 +46,10 @@ func process_player_input():
       elif input_direction == Vector2.RIGHT:
         scale = Vector2(-1, 1)
     else:
-      player_state = PlayerState.WALKING
-      initial_position = position
-      is_moving = true
+      if can_move_to(input_direction):
+        player_state = PlayerState.WALKING
+        initial_position = position
+        is_moving = true
   else:
     is_moving = false
     animation_player.stop(true)
@@ -71,7 +73,23 @@ func need_to_turn():
   facing_direction = new_facing_direction
   return false
 
-func finishing_turning():
+func can_move_to(direction: Vector2):
+  var space_state := get_world_2d().direct_space_state
+  var player_collision_shape = player_collision.shape
+  var transform2d = Transform2D(0, position + direction * TILE_SIZE)
+  var query = PhysicsShapeQueryParameters2D.new()
+  query.shape = player_collision_shape
+  query.transform = transform2d
+  query.collide_with_areas = true
+  query.collision_mask = collision_layers
+  query.exclude = [self]
+
+  var result = space_state.intersect_shape(query)
+  print(result)
+  return result.size() == 0
+
+# Callback animation
+func finishing_turning(): 
   player_state = PlayerState.IDLE
 
 func move(delta: float):

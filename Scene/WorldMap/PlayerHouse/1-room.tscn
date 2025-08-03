@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgeufephf4ky2"]
+[gd_scene load_steps=5 format=3 uid="uid://dgeufephf4ky2"]
 
 [ext_resource type="Texture2D" uid="uid://d1g48gqw0i571" path="res://assets/sprites/world/PlayerHouse/1-room.png" id="1_em1p8"]
 [ext_resource type="PackedScene" uid="uid://bo8buergupsg0" path="res://Scene/Player/player.tscn" id="2_grl04"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grl04"]
 size = Vector2(18, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqplj"]
+size = Vector2(112, 40)
 
 [node name="Room" type="Node2D"]
 
@@ -19,6 +22,14 @@ collision_layer = 256
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1, -4)
 shape = SubResource("RectangleShape2D_grl04")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(150, 40)
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-46, -4)
+shape = SubResource("RectangleShape2D_cqplj")
 
 [node name="Player" parent="." instance=ExtResource("2_grl04")]
 position = Vector2(184, 88)
