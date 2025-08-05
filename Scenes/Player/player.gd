@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player_collision: CollisionShape2D = $CollisionShape2D
@@ -85,7 +85,6 @@ func can_move_to(direction: Vector2):
   query.exclude = [self]
 
   var result = space_state.intersect_shape(query)
-  print(result)
   return result.size() == 0
 
 # Callback animation

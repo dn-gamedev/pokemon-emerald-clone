@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgeufephf4ky2"]
+[gd_scene load_steps=9 format=3 uid="uid://dgeufephf4ky2"]
 
 [ext_resource type="Texture2D" uid="uid://d1g48gqw0i571" path="res://assets/sprites/world/PlayerHouse/1-room.png" id="1_em1p8"]
 [ext_resource type="Texture2D" uid="uid://dtu15jxlmrptv" path="res://assets/sprites/world/PlayerHouse/bed.png" id="2_cqplj"]
+[ext_resource type="PackedScene" uid="uid://dxl7ssvtlhjdi" path="res://Scenes/DoorSystem/door.tscn" id="3_2tmg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grl04"]
 size = Vector2(16, 40)
@@ -29,55 +30,71 @@ position = Vector2(56, 80)
 texture = ExtResource("2_cqplj")
 offset = Vector2(16, 18)
 
-[node name="wall-top-1" type="StaticBody2D" parent="."]
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="wall-top-1" type="StaticBody2D" parent="Walls"]
 position = Vector2(184, 40)
 collision_layer = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall-top-1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/wall-top-1"]
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_grl04")
 
-[node name="wall-top-2" type="StaticBody2D" parent="."]
+[node name="wall-top-2" type="StaticBody2D" parent="Walls"]
 position = Vector2(150, 40)
 collision_layer = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall-top-2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/wall-top-2"]
 position = Vector2(-46, -4)
 shape = SubResource("RectangleShape2D_cqplj")
 
-[node name="wall-top-3" type="StaticBody2D" parent="."]
+[node name="wall-top-3" type="StaticBody2D" parent="Walls"]
 position = Vector2(72, 104)
 collision_layer = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall-top-3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/wall-top-3"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_vre7u")
 
-[node name="boundary-bottom" type="Area2D" parent="."]
+[node name="MapBoundaries" type="Node2D" parent="."]
+
+[node name="boundary-bottom" type="Area2D" parent="MapBoundaries"]
 position = Vector2(128, 161)
 collision_layer = 256
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary-bottom"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBoundaries/boundary-bottom"]
 position = Vector2(-8, -1)
 shape = SubResource("RectangleShape2D_v5w0h")
 
-[node name="boundary-side" type="Area2D" parent="."]
+[node name="boundary-side" type="Area2D" parent="MapBoundaries"]
 position = Vector2(201, 80)
 rotation = -1.57079
 collision_layer = 256
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary-side"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBoundaries/boundary-side"]
 position = Vector2(3.99999, -1)
 shape = SubResource("RectangleShape2D_0sli7")
 
-[node name="boundary-side2" type="Area2D" parent="."]
+[node name="boundary-side2" type="Area2D" parent="MapBoundaries"]
 position = Vector2(41, 80)
 rotation = -1.57079
 collision_layer = 256
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary-side2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBoundaries/boundary-side2"]
 position = Vector2(3.99999, -1)
 shape = SubResource("RectangleShape2D_0sli7")
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="Door_BedRoom" parent="Doors" instance=ExtResource("3_2tmg7")]
+position = Vector2(168, 32)
+destination_level_tag = "2-living_room"
+destination_door_tag = "Door_LivinRoom"
+
+[node name="Spawn" parent="Doors/Door_BedRoom" index="1"]
+position = Vector2(0, 32)
+
+[editable path="Doors/Door_BedRoom"]

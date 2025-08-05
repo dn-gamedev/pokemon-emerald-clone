@@ -16,6 +16,11 @@ config/features=PackedStringArray("4.4", "Mobile")
 run/max_fps=30
 config/icon="res://icon.svg"
 
+[autoload]
+
+SignalHub="*res://Globals/SignalHub.gd"
+NavigationManager="*res://Globals/NavigationManager.gd"
+
 [display]
 
 window/size/viewport_width=240
@@ -28,6 +33,7 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://GeneralNodes/": "yellow",
+"res://Globals/": "red",
 "res://Scenes/": "blue",
 "res://assets/": "orange"
 }
