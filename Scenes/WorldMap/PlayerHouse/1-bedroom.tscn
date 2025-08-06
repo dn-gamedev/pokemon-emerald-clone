@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgeufephf4ky2"]
+[gd_scene load_steps=11 format=3 uid="uid://dgeufephf4ky2"]
 
 [ext_resource type="Texture2D" uid="uid://d1g48gqw0i571" path="res://assets/sprites/world/PlayerHouse/1-room.png" id="1_em1p8"]
+[ext_resource type="Script" uid="uid://cfljbsefeen1l" path="res://Scenes/WorldMap/PlayerHouse/1_bedroom.gd" id="1_ph36f"]
 [ext_resource type="Texture2D" uid="uid://dtu15jxlmrptv" path="res://assets/sprites/world/PlayerHouse/bed.png" id="2_cqplj"]
 [ext_resource type="PackedScene" uid="uid://dxl7ssvtlhjdi" path="res://Scenes/DoorSystem/door.tscn" id="3_2tmg7"]
+[ext_resource type="PackedScene" uid="uid://bo8buergupsg0" path="res://Scenes/Player/player.tscn" id="4_np6wr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grl04"]
 size = Vector2(16, 40)
@@ -20,6 +22,7 @@ size = Vector2(160, 16)
 size = Vector2(136, 16)
 
 [node name="Room" type="Node2D"]
+script = ExtResource("1_ph36f")
 
 [node name="1-room" type="Sprite2D" parent="."]
 position = Vector2(120, 80)
@@ -87,14 +90,17 @@ collision_mask = 0
 position = Vector2(3.99999, -1)
 shape = SubResource("RectangleShape2D_0sli7")
 
+[node name="Player" parent="." instance=ExtResource("4_np6wr")]
+position = Vector2(168, 64)
+
 [node name="Doors" type="Node2D" parent="."]
 
-[node name="Door_BedRoom" parent="Doors" instance=ExtResource("3_2tmg7")]
+[node name="Door_Bedroom" parent="Doors" instance=ExtResource("3_2tmg7")]
 position = Vector2(168, 32)
 destination_level_tag = "2-living_room"
 destination_door_tag = "Door_LivinRoom"
 
-[node name="Spawn" parent="Doors/Door_BedRoom" index="1"]
+[node name="Spawn" parent="Doors/Door_Bedroom" index="1"]
 position = Vector2(0, 32)
 
-[editable path="Doors/Door_BedRoom"]
+[editable path="Doors/Door_Bedroom"]

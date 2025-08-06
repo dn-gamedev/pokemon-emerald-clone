@@ -18,10 +18,10 @@ enum FacingDirection {UP, DOWN, LEFT, RIGHT}
 var player_state = PlayerState.IDLE
 var facing_direction = FacingDirection.DOWN
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+  NavigationManager.on_trigger_player_spawn.connect(_on_spawn)
   initial_position = position
-  pass # Replace with function body.
+
 
 func _physics_process(delta: float) -> void:
   if player_state == PlayerState.TURNING:
@@ -108,3 +108,8 @@ func play_animation(animation: String, dir: Vector2):
     animation_player.play(anim % [animation, "down"])
   if dir == Vector2.LEFT or dir == Vector2.RIGHT:
     animation_player.play(anim % [animation, "side"])
+
+
+func _on_spawn(player_position: Vector2, direction: Vector2):
+  global_position = player_position
+  play_animation('walk', direction)
